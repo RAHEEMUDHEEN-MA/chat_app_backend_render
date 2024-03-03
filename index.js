@@ -14,8 +14,8 @@ Connection();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json()); 
 app.use("/chatapp", appRouter);
-app.get("/",()=>{
-    resizeBy.send("chat app server is running")
+app.get("/",(req,res)=>{
+    res.send("chat app server is running")
     
 })
 
