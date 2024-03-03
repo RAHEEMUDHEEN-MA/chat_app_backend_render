@@ -6,20 +6,25 @@ const http = require("http");
 const appRouter = require("./routers/appRouter");
 const dotenv=require('dotenv')
 const bodyParser = require('body-parser');
-
+ 
 app.use(express.static("images"));
 dotenv.config()
 app.use(cors()); 
 Connection(); 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(express.json()); 
 app.use("/chatapp", appRouter);
+app.get("/",()=>{
+    resizeBy.send("chat app server is running")
+    
+})
 
  
 const server = http.createServer(app);
 
 
 const SocketIO = require("./socket/chatSocket");
+const { log } = require("console");
 SocketIO(server);
  
 const port = 8071;  
